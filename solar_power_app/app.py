@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import joblib
 import plotly.graph_objects as go
+import os
 import time
 
 # 🛠️ Must be the first Streamlit command
@@ -41,9 +42,13 @@ text-shadow: 2px 2px 10px #000000;
 '''
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-# 🧠 Load model and scaler
-model = joblib.load('best_random_forest_model.pkl')
-scaler = joblib.load('scaler.pkl')
+# 🧠 Safe model and scaler loading (works on Streamlit Cloud too)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, "best_random_forest_model.pkl")
+scaler_path = os.path.join(current_dir, "scaler.pkl")
+
+model = joblib.load(model_path)
+scaler = joblib.load(scaler_path)
 
 # 🏷️ Title
 st.title("🌞 Solar Power Generation Prediction")
@@ -69,7 +74,7 @@ if st.button("Predict Power Generation"):
         input_scaled = scaler.transform(input_data)
         prediction = model.predict(input_scaled)[0]
 
-    # 🌟 Glowing animated text for prediction
+    # 🌟 Glowing animated text
     st.markdown(
         f"""
         <style>
