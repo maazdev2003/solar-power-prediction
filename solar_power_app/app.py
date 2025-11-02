@@ -40,8 +40,8 @@ text-shadow: 2px 2px 10px #000000;
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # 🧠 Load model and scaler
-model = joblib.load('best_random_forest_model.pkl')
-scaler = joblib.load('scaler.pkl')
+model = joblib.load('solar_power_app/best_random_forest_model.pkl')
+scaler = joblib.load('solar_power_app/scaler.pkl')
 
 # 🏷️ Title
 st.title("🌞 Solar Power Generation Prediction")
@@ -202,3 +202,4 @@ else:
 # ✨ Footer
 st.write("---")
 st.caption("Developed by Maaz Ahmed Risaldar | Solar Power Prediction Project")
+
