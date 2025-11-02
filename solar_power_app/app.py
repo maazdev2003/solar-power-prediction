@@ -169,4 +169,5 @@ if st.button("Predict Power Generation"):
 
 # ✨ Footer
 st.write("---")
-st.caption("Developed by Maaz Ahmed Risaldar | Solar Power Prediction Project")
+st.caption("Solar Power Prediction Project")
+
